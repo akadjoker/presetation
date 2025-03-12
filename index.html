@@ -211,7 +211,7 @@
 <body>
     <header>
         <h1>Projeto de Carro Autônomo TEAM06</h1>
-        <p>Coleta de Dados e Treinamento de Modelo de Deep Learning</p>
+        <p>Coleta de Dados e Treino de Modelo de Deep Learning</p>
     </header>
 
     <div class="section">
@@ -221,8 +221,8 @@
             O sistema consiste em dois componentes principais:
         </p>
         <ol>
-            <li><strong>Sistema de Coleta de Dados</strong> - Uma interface de controle em tempo real para condução manual enquanto coleta dados de treinamento</li>
-            <li><strong>Pipeline de Treinamento</strong> - Um modelo de aprendizado profundo para prever ângulos de direção a partir de imagens da câmera</li>
+            <li><strong>Sistema de Coleta de Dados</strong> - Uma interface de controle em tempo real para condução manual enquanto coleta dados de treino</li>
+            <li><strong>Pipeline de Treino</strong> - Um modelo de aprendizado profundo para prever ângulos de direção a partir de imagens da câmera</li>
         </ol>
         
         <div class="diagram">
@@ -308,7 +308,7 @@
         <h2>Organização do Dataset</h2>
         
         <p>
-            Os dados coletados são organizados em uma estrutura de diretórios que facilita o gerenciamento e o treinamento.
+            Os dados coletados são organizados em uma estrutura de diretórios que facilita o gerenciamento e o treino.
         </p>
         
         <div class="highlight-box">
@@ -332,21 +332,21 @@
         </ul>
         
         <p>
-            Múltiplas sessões podem ser combinadas para criar um conjunto de dados de treinamento mais diversificado.
+            Múltiplas sessões podem ser combinadas para criar um conjunto de dados de treino mais diversificado.
         </p>
     </div>
     
     <div class="section">
-        <h2>Pipeline de Treinamento</h2>
+        <h2>Pipeline de Treino</h2>
         
         <div class="diagram">
-            <img src="data-flow-diagram.png" alt="Diagrama de Fluxo de Treinamento">
-            <p><em>Fluxo de Coleta de Dados e Treinamento</em></p>
+            <img src="data-flow-diagram.png" alt="Diagrama de Fluxo de Treino">
+            <p><em>Fluxo de Coleta de Dados e Treino</em></p>
         </div>
         
         <h3>Carregamento e Pré-processamento de Dados</h3>
         <p>
-            O sistema de treinamento (Trainning.py) carrega e prepara os dados para treinamento:
+            O sistema de treino (Trainning.py) carrega e prepara os dados para treino:
         </p>
         <ul>
             <li>Carrega e combina dados de múltiplas sessões</li>
@@ -374,7 +374,7 @@
         
         <h3>Balanceamento de Dados</h3>
         <p>
-            Para evitar viés no treinamento, implementamos balanceamento baseado em histograma:
+            Para evitar viés no treino, implementamos balanceamento baseado em histograma:
         </p>
         <ul>
             <li>Limita amostras por bin de ângulo de direção a 300</li>
@@ -386,7 +386,7 @@
             <p><em>Distribuição de Ângulos de Direção Antes e Depois do Balanceamento</em></p>
         </div>
         <div class="diagram">
-            <!-- <p><em>Curvas de Perda para Treinamento e Validação</em></p> -->
+            <!-- <p><em>Curvas de Perda para Treino e Validação</em></p> -->
             <img src="img/0_steering_distribution.png" alt=Distribuiçao de valores">
         </div>
     </div>
@@ -412,7 +412,7 @@
             <li>Saída final: previsão de um único ângulo de direção</li>
         </ul>
         
-        <h3>Processo de Treinamento</h3>
+        <h3>Processo de Treino</h3>
         <ul>
             <li>Divisão treino/validação (80/20)</li>
             <li>Tamanho de lote de 32</li>
@@ -423,11 +423,11 @@
         </ul>
         
         <!-- <div class="diagram">
-            <img src="img/0_training_history.png" alt="Gráfico de Treinamento">
-            <p><em>Curvas de Perda para Treinamento e Validação</em></p>
+            <img src="img/0_training_history.png" alt="Gráfico de Treino">
+            <p><em>Curvas de Perda para Treino e Validação</em></p>
         </div> -->
-        <h3>Histórico de Treinamento</h3>
-        <p>Aqui estão os gráficos de desempenho e análise do treinamento do nosso modelo:</p>
+        <h3>Histórico de Treino</h3>
+        <p>Aqui estão os gráficos de desempenho e análise do treino do nosso modelo:</p>
         
         <div class="image-grid">
             <div class="image-grid-item">
@@ -520,7 +520,7 @@
         <h2>Conclusão</h2>
         
         <p>
-            Este projeto demonstra um pipeline completo desde a coleta de dados até o treinamento do modelo para direção autônoma em um veículo em pequena escala. A combinação de coleta manual de dados com aprendizado profundo cria um sistema que pode aprender a navegar baseado apenas em entrada visual.
+            Este projeto demonstra um pipeline completo desde a coleta de dados até o treino do modelo para direção autônoma em um veículo em pequena escala. A combinação de coleta manual de dados com aprendizado profundo cria um sistema que pode aprender a navegar baseado apenas em entrada visual.
         </p>
         
        

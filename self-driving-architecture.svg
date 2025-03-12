@@ -18,14 +18,14 @@
 
   <!-- Training System Component -->
   <rect x="440" y="80" width="300" height="180" rx="10" fill="#fff2e6" stroke="#ff8c1a" stroke-width="2"/>
-  <text x="590" y="110" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#ff8c1a">Pipeline de Treinamento do Modelo</text>
+  <text x="590" y="110" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#ff8c1a">Pipeline de Treino do Modelo</text>
   
   <!-- Training Details -->
   <rect x="460" y="130" width="260" height="110" rx="5" fill="#ffffff" stroke="#ffccaa" stroke-width="1"/>
   <text x="590" y="150" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Pré-processamento de Dados</text>
   <text x="590" y="175" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Aumento de Dados</text>
   <text x="590" y="200" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Modelo CNN (baseado na NVIDIA)</text>
-  <text x="590" y="225" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Treinamento com Callbacks</text>
+  <text x="590" y="225" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Treino com Callbacks</text>
 
   <!-- Dataset Component -->
   <rect x="250" y="290" width="300" height="140" rx="10" fill="#e6ffe6" stroke="#339933" stroke-width="2"/>

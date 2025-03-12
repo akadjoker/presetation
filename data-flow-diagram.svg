@@ -3,7 +3,7 @@
   <rect width="800" height="600" fill="#f8f9fa"/>
   
   <!-- Title -->
-  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Fluxo de Coleta de Dados e Treinamento</text>
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Fluxo de Coleta de Dados e Treino</text>
 
   <!-- Data Collection Phase -->
   <rect x="50" y="70" width="700" height="220" rx="10" fill="#e6f7ff" stroke="#0099cc" stroke-width="1" opacity="0.3"/>
@@ -38,7 +38,7 @@
   
   <!-- Training Phase -->
   <rect x="50" y="320" width="700" height="250" rx="10" fill="#fff0e6" stroke="#ff8c1a" stroke-width="1" opacity="0.3"/>
-  <text x="400" y="340" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#ff8c1a">Fase de Treinamento</text>
+  <text x="400" y="340" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#ff8c1a">Fase de Treino</text>
   
   <!-- Training Steps -->
   <!-- Step 1: Data Loading -->
@@ -68,7 +68,7 @@
   
   <!-- Step 6: Training -->
   <rect x="380" y="460" width="120" height="60" rx="5" fill="#ffffff" stroke="#ff8c1a" stroke-width="2"/>
-  <text x="440" y="485" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Treinamento</text>
+  <text x="440" y="485" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Treino</text>
   <text x="440" y="505" font-family="Arial" font-size="11" text-anchor="middle" fill="#666">Adam, Early Stopping</text>
   
   <!-- Step 7: Model Export -->
