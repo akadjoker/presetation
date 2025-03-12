@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Fluxo de Coleta de Dados e Treinamento</text>
+
+  <!-- Data Collection Phase -->
+  <rect x="50" y="70" width="700" height="220" rx="10" fill="#e6f7ff" stroke="#0099cc" stroke-width="1" opacity="0.3"/>
+  <text x="400" y="90" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#0099cc">Fase de Coleta de Dados</text>
+  
+  <!-- Collection Steps -->
+  <!-- Step 1: Manual Control -->
+  <rect x="80" y="110" width="150" height="60" rx="5" fill="#ffffff" stroke="#0099cc" stroke-width="2"/>
+  <text x="155" y="130" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Controle Manual</text>
+  <text x="155" y="150" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Teclas WASD + Espaço</text>
+  
+  <!-- Step 2: Camera Capture -->
+  <rect x="280" y="110" width="150" height="60" rx="5" fill="#ffffff" stroke="#0099cc" stroke-width="2"/>
+  <text x="355" y="130" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Captura da Câmera</text>
+  <text x="355" y="150" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">30 FPS via GStreamer</text>
+  
+  <!-- Step 3: Frame Storage -->
+  <rect x="480" y="110" width="150" height="60" rx="5" fill="#ffffff" stroke="#0099cc" stroke-width="2"/>
+  <text x="555" y="130" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Armazenamento</text>
+  <text x="555" y="150" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Arquivos JPG com Timestamp</text>
+  
+  <!-- Step 4: Session Management -->
+  <rect x="280" y="200" width="150" height="60" rx="5" fill="#ffffff" stroke="#0099cc" stroke-width="2"/>
+  <text x="355" y="220" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Gestão de Sessão</text>
+  <text x="355" y="240" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">CSV + Org. de Imagens</text>
+  
+  <!-- Arrows for collection -->
+  <path d="M230 140 L280 140" fill="none" stroke="#0099cc" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M430 140 L480 140" fill="none" stroke="#0099cc" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M555 170 L555 200 L430 200" fill="none" stroke="#0099cc" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M155 170 L155 200 L280 200" fill="none" stroke="#0099cc" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Training Phase -->
+  <rect x="50" y="320" width="700" height="250" rx="10" fill="#fff0e6" stroke="#ff8c1a" stroke-width="1" opacity="0.3"/>
+  <text x="400" y="340" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#ff8c1a">Fase de Treinamento</text>
+  
+  <!-- Training Steps -->
+  <!-- Step 1: Data Loading -->
+  <rect x="80" y="370" width="120" height="60" rx="5" fill="#ffffff" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="140" y="395" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Carregamento</text>
+  <text x="140" y="415" font-family="Arial" font-size="11" text-anchor="middle" fill="#666">Múltiplas Sessões</text>
+  
+  <!-- Step 2: Preprocessing -->
+  <rect x="230" y="370" width="120" height="60" rx="5" fill="#ffffff" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="290" y="395" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Pré-processamento</text>
+  <text x="290" y="415" font-family="Arial" font-size="11" text-anchor="middle" fill="#666">Corte, YUV, Resize</text>
+  
+  <!-- Step 3: Data Balancing -->
+  <rect x="380" y="370" width="120" height="60" rx="5" fill="#ffffff" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="440" y="395" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Balanceamento</text>
+  <text x="440" y="415" font-family="Arial" font-size="11" text-anchor="middle" fill="#666">Distribuição de Ângulos</text>
+  
+  <!-- Step 4: Augmentation -->
+  <rect x="530" y="370" width="120" height="60" rx="5" fill="#ffffff" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="590" y="395" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Aumento de Dados</text>
+  <text x="590" y="415" font-family="Arial" font-size="11" text-anchor="middle" fill="#666">Flip, Zoom, Rotação</text>
+  
+  <!-- Step 5: CNN Model -->
+  <rect x="230" y="460" width="120" height="60" rx="5" fill="#ffffff" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="290" y="485" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Modelo CNN</text>
+  <text x="290" y="505" font-family="Arial" font-size="11" text-anchor="middle" fill="#666">Arquitetura NVIDIA</text>
+  
+  <!-- Step 6: Training -->
+  <rect x="380" y="460" width="120" height="60" rx="5" fill="#ffffff" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="440" y="485" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Treinamento</text>
+  <text x="440" y="505" font-family="Arial" font-size="11" text-anchor="middle" fill="#666">Adam, Early Stopping</text>
+  
+  <!-- Step 7: Model Export -->
+  <rect x="530" y="460" width="120" height="60" rx="5" fill="#ffffff" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="590" y="485" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Exportação</text>
+  <text x="590" y="505" font-family="Arial" font-size="11" text-anchor="middle" fill="#666">Formato .keras</text>
+  
+  <!-- Arrows for training -->
+  <path d="M200 400 L230 400" fill="none" stroke="#ff8c1a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M350 400 L380 400" fill="none" stroke="#ff8c1a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M500 400 L530 400" fill="none" stroke="#ff8c1a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M590 430 L590 445 L440 445 L440 460" fill="none" stroke="#ff8c1a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M440 430 L440 445 L350 445 L350 460 L350 460" fill="none" stroke="#ff8c1a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M350 490 L380 490" fill="none" stroke="#ff8c1a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M500 490 L530 490" fill="none" stroke="#ff8c1a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Connection between phases -->
+  <path d="M355 260 L355 320" fill="none" stroke="#333" stroke-width="3" stroke-dasharray="10,5" marker-end="url(#arrowhead)"/>
+  
+  <!-- File formats -->
+  <rect x="600" y="280" width="120" height="20" rx="5" fill="#f2f2f2" stroke="#666" stroke-width="1"/>
+  <text x="660" y="294" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Arquivos CSV + JPG</text>
+  
+  <!-- Arrow Definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+</svg>

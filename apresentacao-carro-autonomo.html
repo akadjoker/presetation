@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Carro Autônomo com Jetson Nano</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: #0066cc;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 5px;
+            margin-top: 40px;
+        }
+        
+        h3 {
+            color: #339933;
+            margin-top: 25px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .diagram {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 30px 0;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .two-column {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .highlight-box {
+            background-color: #e6f7ff;
+            border-left: 4px solid #0099cc;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .feature-list {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .feature-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            color: #339933;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid #ddd;
+        }
+        
+        /* Área para slides */
+        .slide-controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .slide-controls button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .slide-controls button:hover {
+            background-color: #004c99;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column {
+                flex-direction: column;
+            }
+        }
+        .image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.image-grid img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.image-grid-item {
+    text-align: center;
+}
+
+.image-grid-item p {
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+    <!-- <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" /> -->
+    <!-- <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script> -->
+    <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>Projeto de Carro Autônomo TEAM06</h1>
+        <p>Coleta de Dados e Treinamento de Modelo de Deep Learning</p>
+    </header>
+
+    <div class="section">
+        <h2>Visão Geral do Projeto</h2>
+        <p>
+            Este projeto demonstra a implementação de um sistema de carro autônomo usando a plataforma Jetson Nano.
+            O sistema consiste em dois componentes principais:
+        </p>
+        <ol>
+            <li><strong>Sistema de Coleta de Dados</strong> - Uma interface de controle em tempo real para condução manual enquanto coleta dados de treinamento</li>
+            <li><strong>Pipeline de Treinamento</strong> - Um modelo de aprendizado profundo para prever ângulos de direção a partir de imagens da câmera</li>
+        </ol>
+        
+        <div class="diagram">
+            <img src="self-driving-architecture.png" alt="Diagrama de Arquitetura do Sistema">
+            <p><em>Arquitetura Geral do Sistema de Carro Autônomo</em></p>
+        </div>
+    </div>
+
+    
+    <div class="section">
+        <h2>Processo de Coleta de Dados</h2>
+        
+        <p>
+            O sistema de coleta de dados  foi projetado para facilitar a captura de imagens e ângulos de direção correspondentes para treinar nosso modelo.
+        </p>
+        
+        <div class="diagram">
+            <p><em>Detalhes do Processo de Coleta de Dados</em></p>
+            <img src="data-collection-detail.png" alt="Fluxo de Coleta de Dados">
+        </div>
+        <div class="diagram">
+            <p><em>Images coletadas</em></p>
+            <img src="sample_images.png" alt="Fluxo de Coleta de Dados">
+        </div>
+        <h3>Controle em Tempo Real</h3>
+        <p>
+            O carro é controlado manualmente usando controles de teclado:
+        </p>
+        <ul>
+            <li><strong>W/S</strong> - Acelerar para frente/trás</li>
+            <li><strong>A/D</strong> - Virar à esquerda/direita</li>
+            <li><strong>C</strong> - Centralizar direção</li>
+            <li><strong>Espaço</strong> - Parar</li>
+            <li><strong>T</strong> - Alternar coleta de dados</li>
+            <li><strong>Enter</strong> - Capturar frames manualmente</li>
+        </ul>
+        
+        <!-- <div class="highlight-box">
+            <h3>Feedback Visual</h3>
+            <p>
+                Durante a coleta de dados, recebemos feedback visual através da interface, que inclui:
+            </p>
+            <ul>
+                <li>Indicadores de direção e velocidade em tempo real</li>
+                <li>Visualização do status da coleta de dados</li>
+                <li>Contador de FPS para monitoramento de desempenho</li>
+            </ul>
+        </div> -->
+        <div class="section">
+            <h2>Demonstração de Teste</h2>
+            <video
+            id="my-video"
+            class="video-js"
+            controls
+            preload="auto"
+            width="640"
+            height="464"
+            data-setup="{}"
+          >
+            <source src="coleta_dados.mp4" type="video/mp4" />
+            <source src="coleta_dados.webm" type="video/webm" />
+            <p class="vjs-no-js">
+              To view this video please enable JavaScript, and consider upgrading to a
+              web browser that
+              <a href="https://videojs.com/html5-video-support/" target="_blank"
+                >supports HTML5 video</a
+              >
+            </p>
+          </video>
+            <!-- <div class="video-container">
+                <video id="video-coleta" class="video-js vjs-big-play-centered vjs-fluid" controls preload="auto" poster="imagens/poster-coleta.jpg" data-setup='{}'>
+                    <source src="coleta_dados.mp4" type="video/mp4">
+                    <source src="coleta_dados.avi" type="video/avi">
+                    <p class="vjs-no-js">
+                        Para ver este vídeo, por favor ative o JavaScript e considere atualizar para um
+                        navegador que <a href="https://videojs.com/html5-video-support/" target="_blank">suporte vídeo HTML5</a>
+                    </p>
+                </video>
+            </div> -->
+    </div>
+    
+    <div class="section">
+        <h2>Organização do Dataset</h2>
+        
+        <p>
+            Os dados coletados são organizados em uma estrutura de diretórios que facilita o gerenciamento e o treinamento.
+        </p>
+        
+        <div class="highlight-box">
+            <h3>Estrutura do Dataset</h3>
+            <code>
+                dataset/<br>
+                &nbsp;&nbsp;session_YYYYMMDD_HHMMSS/<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;steering_data.csv<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;images/<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frame_YYYYMMDD_HHMMSS_ffffff.jpg<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+            </code>
+        </div>
+        
+        <p>
+            Cada sessão de condução gera:
+        </p>
+        <ul>
+            <li>Um arquivo CSV que mapeia imagens para seus ângulos de direção correspondentes</li>
+            <li>Uma pasta de imagens contendo todos os frames capturados durante a sessão</li>
+        </ul>
+        
+        <p>
+            Múltiplas sessões podem ser combinadas para criar um conjunto de dados de treinamento mais diversificado.
+        </p>
+    </div>
+    
+    <div class="section">
+        <h2>Pipeline de Treinamento</h2>
+        
+        <div class="diagram">
+            <img src="data-flow-diagram.png" alt="Diagrama de Fluxo de Treinamento">
+            <p><em>Fluxo de Coleta de Dados e Treinamento</em></p>
+        </div>
+        
+        <h3>Carregamento e Pré-processamento de Dados</h3>
+        <p>
+            O sistema de treinamento (Trainning.py) carrega e prepara os dados para treinamento:
+        </p>
+        <ul>
+            <li>Carrega e combina dados de múltiplas sessões</li>
+            <li>Verifica a existência de imagens e cria datasets válidos</li>
+            <li>Aplica pré-processamento de imagem:
+                <ul>
+                    <li>Corte para focar na estrada</li>
+                    <li>Conversão para espaço de cor YUV para melhor extração de características</li>
+                    <li>Aplica desfoque Gaussiano para reduzir ruído</li>
+                    <li>Redimensiona para formato 200×66 (dimensões do modelo NVIDIA)</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h3>Aumento de Dados</h3>
+        <p>
+            Para melhorar a generalização do modelo, aplicamos técnicas de aumento de dados:
+        </p>
+        <ul>
+            <li>Deslocamentos horizontais e verticais aleatórios (pan)</li>
+            <li>Zoom aleatório para simular diferentes distâncias</li>
+            <li>Ajustes de brilho aleatórios para condições de iluminação</li>
+            <li>Inversões horizontais aleatórias com inversão do ângulo de direção</li>
+        </ul>
+        
+        <h3>Balanceamento de Dados</h3>
+        <p>
+            Para evitar viés no treinamento, implementamos balanceamento baseado em histograma:
+        </p>
+        <ul>
+            <li>Limita amostras por bin de ângulo de direção a 300</li>
+            <li>Garante que o modelo não se sobreajuste a andar em linha reta</li>
+        </ul>
+        
+        <div class="diagram">
+            <img src="balanceamento-dados.png" alt="Gráfico de Balanceamento de Dados">
+            <p><em>Distribuição de Ângulos de Direção Antes e Depois do Balanceamento</em></p>
+        </div>
+        <div class="diagram">
+            <!-- <p><em>Curvas de Perda para Treinamento e Validação</em></p> -->
+            <img src="img/0_steering_distribution.png" alt=Distribuiçao de valores">
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Arquitetura da Rede Neural</h2>
+        
+        <p>
+            O modelo de rede neural convolucional (CNN) utilizado é baseado na arquitetura end-to-end da NVIDIA para direção autônoma.
+        </p>
+        
+        <div class="diagram">
+            <img src="neural-network-architecture.png" alt="Arquitetura da Rede Neural">
+            <p><em>Arquitetura CNN baseada na NVIDIA</em></p>
+        </div>
+        
+        <h3>Detalhes da Arquitetura</h3>
+        <ul>
+            <li>Camada de normalização de entrada</li>
+            <li>5 camadas convolucionais com ativação ELU</li>
+            <li>Normalização em lote após cada camada convolucional</li>
+            <li>3 camadas totalmente conectadas com dropout para regularização</li>
+            <li>Saída final: previsão de um único ângulo de direção</li>
+        </ul>
+        
+        <h3>Processo de Treinamento</h3>
+        <ul>
+            <li>Divisão treino/validação (80/20)</li>
+            <li>Tamanho de lote de 32</li>
+            <li>Otimizador Adam com taxa de aprendizado adaptativa</li>
+            <li>Parada antecipada para prevenir sobreajuste</li>
+            <li>Checkpoint de modelo para salvar o modelo com melhor desempenho</li>
+            <li>Redução da taxa de aprendizado em platôs</li>
+        </ul>
+        
+        <!-- <div class="diagram">
+            <img src="img/0_training_history.png" alt="Gráfico de Treinamento">
+            <p><em>Curvas de Perda para Treinamento e Validação</em></p>
+        </div> -->
+        <h3>Histórico de Treinamento</h3>
+        <p>Aqui estão os gráficos de desempenho e análise do treinamento do nosso modelo:</p>
+        
+        <div class="image-grid">
+            <div class="image-grid-item">
+                <img src="img/0_training_history.png" alt="Historico">
+            </div>
+            <div class="image-grid-item">
+                <img src="img/1_training_history.png" alt="Historico">
+            </div>
+            <div class="image-grid-item">
+                <img src="img/2_training_history.png" alt="Historico">
+            </div>
+            <div class="image-grid-item">
+                <img src="img/3_training_history.png" alt="Historico">
+            </div>
+        </div>
+
+    </div>
+
+    
+    <div class="section">
+        <h2>Demonstração de Teste</h2>
+        <video
+        id="my-video"
+        class="video-js"
+        controls
+        preload="auto"
+        width="640"
+        height="464"
+        data-setup="{}"
+      >
+        <source src="final.mp4" type="video/mp4" />
+        <source src="final.webm" type="video/webm" />
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a
+          web browser that
+          <a href="https://videojs.com/html5-video-support/" target="_blank"
+            >supports HTML5 video</a
+          >
+        </p>
+      </video>
+
+        <!-- <div class="video-container">
+            <video id="video-coleta" class="video-js   vjs-fluid" controls preload="auto"  data-setup='{}'>
+                <source src="final.mp4" type="video/mp4">
+                <source src="final.avi" type="video/avi">
+                <p class="vjs-no-js">
+                    Para ver este vídeo, por favor ative o JavaScript e considere atualizar para um
+                    navegador que <a href="https://videojs.com/html5-video-support/" target="_blank">suporte vídeo HTML5</a>
+                </p>
+            </video>
+        </div> -->
+    </div>
+
+    <div class="section">
+        <h2>Próximos Passos</h2>
+        
+        <div class="highlight-box">
+            <h3>Sistema de Direção Assistida</h3>
+            <p>
+                O próximo passo é desenvolver um sistema de direção assistida, onde:
+            </p>
+            <ul class="feature-list">
+                <li>O condutor mantém controle principal sobre o veículo</li>
+                <li>O modelo ajuda virando o volante baseado nas imagens da câmera</li>
+                <li>Força de assistência pode ser ajustada conforme necessidade</li>
+                <li>O condutor pode sobrepor a decisão do modelo a qualquer momento</li>
+            </ul>
+            <p>
+                Este modo híbrido servirá como transição entre controle manual e autonomia completa.
+            </p>
+        </div>
+        
+        <div class="highlight-box">
+            <h3>Sistema Completamente Autônomo</h3>
+            <p>
+                O objetivo final é um sistema totalmente autônomo, com desafios importantes:
+            </p>
+            <ul class="feature-list">
+                <li>Otimização do desempenho do Jetson Nano para processamento em tempo real</li>
+                <li>Calibração precisa da força aplicada aos motores para evitar perda de controle</li>
+                <li>Implementação de sistema de detecção de obstáculos e parada de emergência</li>
+                <li>Desenvolvimento de algoritmos para navegação entre pontos pré-definidos</li>
+            </ul>
+        </div>
+        
+      
+    </div>
+        
+    <div class="section">
+        <h2>Conclusão</h2>
+        
+        <p>
+            Este projeto demonstra um pipeline completo desde a coleta de dados até o treinamento do modelo para direção autônoma em um veículo em pequena escala. A combinação de coleta manual de dados com aprendizado profundo cria um sistema que pode aprender a navegar baseado apenas em entrada visual.
+        </p>
+        
+       
+       
+    </div>
+    <footer>
+        <p>TEAM 06</p>
+        <p>&copy; 2025 SEA.ME PT - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+          
+        document.addEventListener('DOMContentLoaded', function() {
+            const placeholders = document.querySelectorAll('img[src^="/api/placeholder"]');
+            
+    
+            /*
+            placeholders.forEach(function(img) {
+                const alt = img.getAttribute('alt');
+                switch(alt) {
+                    case 'Diagrama de Arquitetura do Sistema':
+                        img.src = 'imagens/arquitetura_sistema.png';
+                        break;
+                    case 'Foto do Hardware':
+                        img.src = 'imagens/hardware.jpg';
+                        break;
+                    // etc.
+                }
+            });
+            */
+        });
+    </script>
+ <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>    
+    <script>
+
+        var player = videojs(document.querySelector('.video-js'));
+      </script>
+</body>
+</html>

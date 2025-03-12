@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Arquitetura CNN baseada na NVIDIA</text>
+  <text x="400" y="70" font-family="Arial" font-size="16" text-anchor="middle" fill="#666">Para Previsão de Direção End-to-End</text>
+
+  <!-- Input Layer -->
+  <rect x="50" y="120" width="90" height="60" rx="5" fill="#e6f2ff" stroke="#0066cc" stroke-width="2"/>
+  <text x="95" y="145" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Entrada</text>
+  <text x="95" y="165" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">66x200x3</text>
+  
+  <!-- Normalization Layer -->
+  <rect x="170" y="120" width="90" height="60" rx="5" fill="#e6f7ff" stroke="#0099cc" stroke-width="2"/>
+  <text x="215" y="145" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Lambda</text>
+  <text x="215" y="165" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Normalização</text>
+  
+  <!-- Conv Layers -->
+  <!-- Conv1 -->
+  <rect x="290" y="100" width="90" height="45" rx="5" fill="#fff2e6" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="335" y="125" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Conv2D</text>
+  <text x="335" y="140" font-family="Arial" font-size="10" text-anchor="middle" fill="#666">24@5x5 s2 ELU</text>
+  
+  <!-- BatchNorm1 -->
+  <rect x="290" y="155" width="90" height="25" rx="5" fill="#f2f2f2" stroke="#999999" stroke-width="1"/>
+  <text x="335" y="172" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">BatchNorm</text>
+  
+  <!-- Conv2 -->
+  <rect x="410" y="100" width="90" height="45" rx="5" fill="#fff2e6" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="455" y="125" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Conv2D</text>
+  <text x="455" y="140" font-family="Arial" font-size="10" text-anchor="middle" fill="#666">36@5x5 s2 ELU</text>
+  
+  <!-- BatchNorm2 -->
+  <rect x="410" y="155" width="90" height="25" rx="5" fill="#f2f2f2" stroke="#999999" stroke-width="1"/>
+  <text x="455" y="172" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">BatchNorm</text>
+  
+  <!-- Conv3 -->
+  <rect x="530" y="100" width="90" height="45" rx="5" fill="#fff2e6" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="575" y="125" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Conv2D</text>
+  <text x="575" y="140" font-family="Arial" font-size="10" text-anchor="middle" fill="#666">48@5x5 s2 ELU</text>
+  
+  <!-- BatchNorm3 -->
+  <rect x="530" y="155" width="90" height="25" rx="5" fill="#f2f2f2" stroke="#999999" stroke-width="1"/>
+  <text x="575" y="172" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">BatchNorm</text>
+  
+  <!-- Conv4 -->
+  <rect x="650" y="100" width="90" height="45" rx="5" fill="#fff2e6" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="695" y="125" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Conv2D</text>
+  <text x="695" y="140" font-family="Arial" font-size="10" text-anchor="middle" fill="#666">64@3x3 ELU</text>
+  
+  <!-- BatchNorm4 -->
+  <rect x="650" y="155" width="90" height="25" rx="5" fill="#f2f2f2" stroke="#999999" stroke-width="1"/>
+  <text x="695" y="172" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">BatchNorm</text>
+  
+  <!-- Conv5 -->
+  <rect x="650" y="200" width="90" height="45" rx="5" fill="#fff2e6" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="695" y="225" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Conv2D</text>
+  <text x="695" y="240" font-family="Arial" font-size="10" text-anchor="middle" fill="#666">64@3x3 ELU</text>
+  
+  <!-- BatchNorm5 -->
+  <rect x="650" y="255" width="90" height="25" rx="5" fill="#f2f2f2" stroke="#999999" stroke-width="1"/>
+  <text x="695" y="272" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">BatchNorm</text>
+  
+  <!-- Flatten -->
+  <rect x="530" y="220" width="90" height="30" rx="5" fill="#f2e6ff" stroke="#8c1aff" stroke-width="2"/>
+  <text x="575" y="240" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Flatten</text>
+  
+  <!-- FC1 -->
+  <rect x="410" y="220" width="90" height="40" rx="5" fill="#e6ffe6" stroke="#339933" stroke-width="2"/>
+  <text x="455" y="240" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Dense</text>
+  <text x="455" y="255" font-family="Arial" font-size="10" text-anchor="middle" fill="#666">100 ELU</text>
+  
+  <!-- Dropout1 -->
+  <rect x="410" y="270" width="90" height="25" rx="5" fill="#ffe6e6" stroke="#cc0000" stroke-width="1"/>
+  <text x="455" y="287" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Dropout 0.5</text>
+  
+  <!-- FC2 -->
+  <rect x="290" y="220" width="90" height="40" rx="5" fill="#e6ffe6" stroke="#339933" stroke-width="2"/>
+  <text x="335" y="240" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Dense</text>
+  <text x="335" y="255" font-family="Arial" font-size="10" text-anchor="middle" fill="#666">50 ELU</text>
+  
+  <!-- Dropout2 -->
+  <rect x="290" y="270" width="90" height="25" rx="5" fill="#ffe6e6" stroke="#cc0000" stroke-width="1"/>
+  <text x="335" y="287" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Dropout 0.5</text>
+  
+  <!-- FC3 -->
+  <rect x="170" y="220" width="90" height="40" rx="5" fill="#e6ffe6" stroke="#339933" stroke-width="2"/>
+  <text x="215" y="240" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Dense</text>
+  <text x="215" y="255" font-family="Arial" font-size="10" text-anchor="middle" fill="#666">10 ELU</text>
+  
+  <!-- Dropout3 -->
+  <rect x="170" y="270" width="90" height="25" rx="5" fill="#ffe6e6" stroke="#cc0000" stroke-width="1"/>
+  <text x="215" y="287" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Dropout 0.3</text>
+  
+  <!-- Output -->
+  <rect x="50" y="220" width="90" height="40" rx="5" fill="#ffe6cc" stroke="#cc7a00" stroke-width="2"/>
+  <text x="95" y="240" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Dense</text>
+  <text x="95" y="255" font-family="Arial" font-size="10" text-anchor="middle" fill="#666">1 (Direção)</text>
+  
+  <!-- Arrows -->
+  <path d="M140 150 L170 150" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M260 150 L290 150" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M380 150 L410 150" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M500 150 L530 150" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M620 150 L650 150" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M695 180 L695 200" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M650 235 L620 235" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M530 235 L500 235" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M410 235 L380 235" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M290 235 L260 235" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M170 235 L140 235" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Legend -->
+  <rect x="50" y="350" width="120" height="30" rx="5" fill="#e6f2ff" stroke="#0066cc" stroke-width="2"/>
+  <text x="110" y="370" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Camada de Entrada</text>
+  
+  <rect x="190" y="350" width="120" height="30" rx="5" fill="#fff2e6" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="250" y="370" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Camada Convolucional</text>
+  
+  <rect x="330" y="350" width="120" height="30" rx="5" fill="#e6ffe6" stroke="#339933" stroke-width="2"/>
+  <text x="390" y="370" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Camada Densa</text>
+  
+  <rect x="470" y="350" width="120" height="30" rx="5" fill="#ffe6e6" stroke="#cc0000" stroke-width="1"/>
+  <text x="530" y="370" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Dropout</text>
+  
+  <rect x="610" y="350" width="120" height="30" rx="5" fill="#f2f2f2" stroke="#999999" stroke-width="1"/>
+  <text x="670" y="370" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Normalização</text>
+
+  <!-- Notes -->
+  <text x="400" y="420" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Baseado na arquitetura NVIDIA para direção autônoma</text>
+  <text x="400" y="440" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Adaptado com BatchNorm e Dropout para melhor regularização</text>
+  
+  <!-- Arrow Definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+</svg>

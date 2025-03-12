@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Arquitetura do Sistema de Carro Autônomo</text>
+
+  <!-- Data Collection Component -->
+  <rect x="60" y="80" width="300" height="180" rx="10" fill="#e6f2ff" stroke="#0066cc" stroke-width="2"/>
+  <text x="210" y="110" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#0066cc">Sistema de Coleta de Dados</text>
+  
+  <!-- Data Collection Details -->
+  <rect x="80" y="130" width="260" height="110" rx="5" fill="#ffffff" stroke="#aaccee" stroke-width="1"/>
+  <text x="210" y="150" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Interface de Controle Manual</text>
+  <text x="210" y="175" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Processamento do Feed da Câmera</text>
+  <text x="210" y="200" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Armazenamento de Dados por Sessão</text>
+  <text x="210" y="225" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Registro de Ângulo de Direção</text>
+
+  <!-- Training System Component -->
+  <rect x="440" y="80" width="300" height="180" rx="10" fill="#fff2e6" stroke="#ff8c1a" stroke-width="2"/>
+  <text x="590" y="110" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#ff8c1a">Pipeline de Treinamento do Modelo</text>
+  
+  <!-- Training Details -->
+  <rect x="460" y="130" width="260" height="110" rx="5" fill="#ffffff" stroke="#ffccaa" stroke-width="1"/>
+  <text x="590" y="150" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Pré-processamento de Dados</text>
+  <text x="590" y="175" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Aumento de Dados</text>
+  <text x="590" y="200" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Modelo CNN (baseado na NVIDIA)</text>
+  <text x="590" y="225" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Treinamento com Callbacks</text>
+
+  <!-- Dataset Component -->
+  <rect x="250" y="290" width="300" height="140" rx="10" fill="#e6ffe6" stroke="#339933" stroke-width="2"/>
+  <text x="400" y="320" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#339933">Gerenciamento de Dataset</text>
+  
+  <!-- Dataset Details -->
+  <rect x="270" y="340" width="260" height="70" rx="5" fill="#ffffff" stroke="#aaeebb" stroke-width="1"/>
+  <text x="400" y="360" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Combinação de Múltiplas Sessões</text>
+  <text x="400" y="385" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Balanceamento por Histograma</text>
+
+  <!-- Flow Arrows -->
+  <path d="M210 260 L285 290" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M590 260 L515 290" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M360 80 L420 80 L440 80" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Jetson Nano -->
+  <rect x="310" y="450" width="180" height="40" rx="5" fill="#f2e6ff" stroke="#8c1aff" stroke-width="2"/>
+  <text x="400" y="475" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#8c1aff">Plataforma Jetson Nano</text>
+
+  <!-- Connection lines to Jetson -->
+  <path d="M400 430 L400 450" fill="none" stroke="#8c1aff" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow Definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+</svg>
